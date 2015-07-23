@@ -1,5 +1,6 @@
 module ApplicationHelper
   def my_name
-    puts "Virginia"
+
+    "Virginia"
   end
 end
