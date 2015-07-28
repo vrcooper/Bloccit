@@ -8,7 +8,19 @@ require 'faker'
 
     )
 end
+
 posts = Post.all
+
+#Create unique post
+
+Post.create!(
+  title: "My atomic post!",
+  body: "This post is absolutely fabulous!"
+  
+  )
+
+
+
 
 #Create Comments
 100.times do
@@ -18,6 +30,14 @@ posts = Post.all
 
     )
 end
+
+#Create unique comment
+
+Comment.create!(
+  post: posts.post,
+  body: "I agree! Your post is atomic!"
+
+  )
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
