@@ -13,13 +13,15 @@ posts = Post.all
 
 #Create unique post
 
+1.times do
 Post.create!(
-  title: "My atomic post!",
+ title: "My atomic post!",
   body: "This post is absolutely fabulous!"
   
-  )
+ )
+end
 
-
+post = Post.first
 
 
 #Create Comments
@@ -33,11 +35,13 @@ end
 
 #Create unique comment
 
+1.times do
 Comment.create!(
-  post: posts.post,
+  post: posts.first,
   body: "I agree! Your post is atomic!"
 
   )
+end
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
