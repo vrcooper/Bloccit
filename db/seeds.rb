@@ -13,15 +13,15 @@ posts = Post.all
 
 #Create unique post
 
-1.times do
-Post.create!(
- title: "My atomic post!",
-  body: "This post is absolutely fabulous!"
+##1.times do
+##Post.create!(
+ ##title: "My atomic post!",
+ ## body: "This post is absolutely fabulous!"
   
- )
-end
+ #)
+#end
 
-post = Post.first
+post = Post.find_or_create_by(title: "My atomic post!", body:"This post is absolutely fabulous!")
 
 
 #Create Comments
@@ -35,13 +35,15 @@ end
 
 #Create unique comment
 
-1.times do
-Comment.create!(
-  post: posts.first,
-  body: "I agree! Your post is atomic!"
+#1.times do
+#Comment.create!(
+  #post: posts.first,
+  #body: "I agree! Your post is atomic!"
 
-  )
-end
+  #)
+#end
+
+comment = Comment.find_or_create_by(post: post, comment: "I agree! Your post is atomic!")
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
