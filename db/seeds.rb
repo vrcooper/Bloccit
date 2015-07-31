@@ -43,7 +43,12 @@ end
   #)
 #end
 
-comment = Comment.find_or_create_by(post: post, comment: "I agree! Your post is atomic!")
+comment = Comment.find_or_create_by(post: post, body: "I agree! Your post is atomic!")
+
+
+# Create advertisements
+
+advertisement = Advertisement.find_or_create_by(title:'Ultimate Weight Loss Solution', body: 'http://www.rebootwithjoe.com', price: '100')
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
