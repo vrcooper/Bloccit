@@ -43,7 +43,7 @@ end
   #)
 #end
 
-comment = Comment.find_or_create_by(post: post, comment: "I agree! Your post is atomic!")
+comment = Comment.find_or_create_by(post: post, body: "I agree! Your post is atomic!")
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
