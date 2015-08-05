@@ -48,8 +48,21 @@ comment = Comment.find_or_create_by(post: post, body: "I agree! Your post is ato
 
 # Create advertisements
 
-advertisement = Advertisement.find_or_create_by(title:'Ultimate Weight Loss Solution', body: 'http://www.rebootwithjoe.com', price: '100')
+advertisement = Advertisement.find_or_create_by(title:'Ultimate Weight Loss Solution', copy: 'http://www.rebootwithjoe.com', price: '100')
+
+# Create questions
+
+5.times do
+  Question.create!(
+    title: Faker::Lorem.sentence,
+    body: Faker::Lorem.paragraph
+
+    )
+end
+
+question = Question.find_or_create_by(title:'How do I find Waldo?', body: 'You must first ask Santa.')
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+puts "#{Question.count} questions created"
