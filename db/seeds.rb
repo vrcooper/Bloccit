@@ -51,14 +51,14 @@ comment = Comment.find_or_create_by(post: post, body: "I agree! Your post is ato
   Advertisement.create!(
     title: "Extreme Juicing",
     copy: "http://www.rebootwithjoe.com", 
-    price: "100"
+    price: "500"
     )
 end
 
 Advertisements = Advertisement.all
 
 
-Advertisements = Advertisement.find_or_create_by(title:'Ultimate Weight Loss Solution', copy: 'http://www.biggestloser.com', price: '$150')
+Advertisements = Advertisement.find_or_create_by(title:'Ultimate Weight Loss Solution', copy: 'http://www.biggestloser.com', price: '300')
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
