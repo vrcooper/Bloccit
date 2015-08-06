@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+ before_action :flash_attack
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -9,4 +11,11 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
+
+  
+def flash_attack
+  flash[:notice] = "Hello there! This is a flash attack!"
+end
+  
+
 end
