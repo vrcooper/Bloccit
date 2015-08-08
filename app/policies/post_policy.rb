@@ -4,18 +4,23 @@ class PostPolicy < ApplicationPolicy
     true
     end
 
-  class Scope
-    attr_reader :user, :scope
+  class Scope < Scope
+    #attr_reader :user, :scope
 
-    def initializer(user, scope)
-      @user = user
-      @scope = scope
+    #def initialize(user, scope)
+      #@user = user
+      #@scope = scope
     end
 
     def resolve
       if user.admin? || moderator?
         scope.all
+     
+      #elsif user.moderator?
+        #scope.all
+
       else
+        
         scope.where(user: user)
 
       end
@@ -24,4 +29,4 @@ class PostPolicy < ApplicationPolicy
 
    
   end
-end
+

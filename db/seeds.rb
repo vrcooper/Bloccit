@@ -114,6 +114,15 @@ admin = User.new(
   member.skip_confirmation!
   member.save!
 
+  guest = User.new(
+    name: 'Guest name'
+    email: 'guest@example.com'
+    password: 'helloworld'
+    )
+
+  guest.skip_confirmation!
+  guest.save!
+
 
 puts "Seed finished"
 puts "#{User.count} users created"
