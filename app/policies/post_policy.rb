@@ -1,32 +1,39 @@
 class PostPolicy < ApplicationPolicy
 
-   def index?
+    def index?
+    
     true
+    
     end
+
+    
 
   class Scope < Scope
-    #attr_reader :user, :scope
-
-    #def initialize(user, scope)
-      #@user = user
-      #@scope = scope
-    end
+    
+  end
 
     def resolve
-      if user.admin? || moderator?
-        scope.all
+      
+      
+    
+      if user.admin? || user.moderator?
+      scope.all
      
-      #elsif user.moderator?
-        #scope.all
+      elsif user.member?
+        scope.where(:id => record.id).exists?
+
 
       else
         
-        scope.where(user: user)
-
+        return scope.none if user.guest? || user.nil?
+        
       end
 
     end
+end
+
+  
 
    
-  end
+  
 
