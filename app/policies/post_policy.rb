@@ -10,27 +10,27 @@ class PostPolicy < ApplicationPolicy
 
   class Scope < Scope
     
-  end
 
-    def resolve
+  def resolve
       
-      
+      return scope.none if user.nil?
     
       if user.admin? || user.moderator?
       scope.all
      
       elsif user.member?
         scope.where(:id => record.id).exists?
-
-
-      else
         
-        return scope.none if user.guest? || user.nil?
+
+
+      end
+        
+      
         
       end
 
     end
-end
+  end
 
   
 
