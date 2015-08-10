@@ -25,7 +25,7 @@ class SummariesController < ApplicationController
 
   def show
     @summary = Summary.find(params[:id])
-    @posts = @summary.posts
+    @post = @summary.post
     authorize @summary
   end
 

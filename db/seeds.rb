@@ -29,29 +29,32 @@ users = User.all
 end
 topics = Topic.all
 
-# Create Summaries
 
-10.times do
+#Create Posts
+50.times do 
+  post = Post.create!(
+    user:  users.sample,
+    topic: topics.sample,
+    title: Faker::Lorem.sentence,
+    body:  Faker::Lorem.paragraph)
+
+  #Summary.create!(
+    #name: Faker::Lorem.sentence,
+    #description: Faker::Lorem.paragraph,
+    #post: post)
+end
+
+posts = Post.all
+
+
+# Create Summaries
+50.times do
   Summary.create!(
     name: Faker::Lorem.sentence,
     description: Faker::Lorem.paragraph
     )
 end
 summaries = Summary.all
-
-#Create Posts
-50.times do 
-  Post.create!(
-    user:  users.sample,
-    summary: summaries.sample,
-    topic: topics.sample,
-    title: Faker::Lorem.sentence,
-    body:  Faker::Lorem.paragraph
-
-    )
-end
-
-posts = Post.all
 
 #Create unique post
 
