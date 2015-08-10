@@ -1,14 +1,34 @@
 class SummaryPolicy <ApplicationPolicy
 
-  def index?
+  
+    def index?
+    
     true
-  end
+    
+    end
 
-  def create?
-    user.present? && user.admin?
-  end
+    
 
-  def update?
-    create?
+  class Scope < Scope
+    
+
+  def resolve
+      
+      return scope.none if user.nil?
+    
+      if user.admin? || user.moderator?
+      scope.all
+     
+      else user.member?
+        scope.where(:id => record.id).exists?
+        
+
+
+      end
+        
+      
+        
+      end
+
+    end
   end
-end
