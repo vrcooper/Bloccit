@@ -29,10 +29,21 @@ users = User.all
 end
 topics = Topic.all
 
+# Create Summaries
+
+10.times do
+  Summary.create!(
+    name: Faker::Lorem.sentence,
+    description: Faker::Lorem.paragraph
+    )
+end
+summaries = Summary.all
+
 #Create Posts
 50.times do 
   Post.create!(
     user:  users.sample,
+    summary: summaries.sample,
     topic: topics.sample,
     title: Faker::Lorem.sentence,
     body:  Faker::Lorem.paragraph
@@ -130,3 +141,4 @@ puts "#{User.count} users created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 puts "#{Topic.count} topics created"
+puts "#{Summary.count} summaries created"
