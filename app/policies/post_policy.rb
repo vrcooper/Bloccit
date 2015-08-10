@@ -9,28 +9,20 @@ class PostPolicy < ApplicationPolicy
     
 
   class Scope < Scope
-    
+    # ivars in this clas are: user, scope
 
-  def resolve
-      
+    def resolve
+      # Post is scope
       return scope.none if user.nil?
     
       if user.admin? || user.moderator?
-      scope.all
-     
-      elsif user.member?
-        scope.where(:id => record.id).exists?
-        
-
-
+        Post.all
+      else
+        Post.where(:user_id => user.id)
       end
-        
-      
-        
-      end
-
     end
   end
+end
 
   
 

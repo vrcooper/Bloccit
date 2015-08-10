@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   def index
     
-    @posts = policy_scope(Post.all)
-    
+    # PostPolicy::Scope.new(current_user, Post).resolve
+    @posts = policy_scope(Post)
   end
 
   def show
