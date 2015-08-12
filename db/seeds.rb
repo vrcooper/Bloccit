@@ -82,47 +82,47 @@ end
 
 #advertisement = Advertisement.find_or_create_by(title:'Ultimate Weight Loss Solution', body: 'http://www.rebootwithjoe.com', price: '100')
 
-#user = User.first
-#user.skip_reconfirmation!
-#user.update_attributes!(
-  #email: 'vcooper_us@yahoo.com',
-  #password: 'helloworld'
-  #)
+user = User.first
+user.skip_reconfirmation!
+user.update_attributes!(
+  email: 'vcooper_us@yahoo.com',
+  password: 'helloworld'
+  )
 
 #Create an admin user
 
-admin = User.new(
-  name: 'Admin User',
-  email: 'admin@example.com',
-  password: 'helloworld',
-  role: 'admin'
-  )
+#admin = User.new(
+  #name: 'Admin User',
+  #email: 'admin@example.com',
+  #password: 'helloworld',
+  #role: 'admin'
+  #)
 
-  admin.skip_confirmation!
-  admin.save!
+  #admin.skip_confirmation!
+  #admin.save!
 
   # Create a moderator
 
-  moderator = User.new(
-    name: 'Moderator User',
-    email: 'moderator@example.com',
-    password: 'helloworld',
-    role: 'moderator'
-    )
+  #moderator = User.new(
+    #name: 'Moderator User',
+    #email: 'moderator@example.com',
+    #password: 'helloworld',
+    #role: 'moderator'
+    #)
 
-  moderator.skip_confirmation!
-  moderator.save!
+  #moderator.skip_confirmation!
+  #moderator.save!
 
   # Create a member
 
-  member = User.new(
-    name: 'Member User',
-    email: 'member@example.com',
-    password: 'helloworld'
-    )
+  #member = User.new(
+    #name: 'Member User',
+    #email: 'member@example.com',
+    #password: 'helloworld'
+    #)
 
-  member.skip_confirmation!
-  member.save!
+  #member.skip_confirmation!
+  #member.save!
 
 
 puts "Seed finished"
