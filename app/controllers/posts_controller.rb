@@ -20,6 +20,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.topic =  @topic
     authorize @post
+    authorize @comment
     
     if @post.save
       flash[:notice] = "Post was saved."
