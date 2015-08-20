@@ -1,7 +1,6 @@
-<h1><%= markdown_to_html @post.title %></h1>
-
 <div class="row">
   <div class="col-md-8">
+    <h1><%= markdown_to_html @post.title %></h1>
     <small>
       <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
       submitted <%= time_ago_in_words(@post.created_at) %> ago by
@@ -9,27 +8,29 @@
     </small>
     
     <%if @post.image? %>
-    <div class="form-group">
       <p>Current Image</p>
       <%= image_tag @post.image.url(:large) %>
-    </div>
     <% end %>
    
    <p><%= markdown_to_html @post.body %></p>
   </div>
   <div class="col-md-4">
-<% if policy(@post).edit? %>
-<%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
-<% end %>
+    <% if policy(@post).edit? %>
+      <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success' %>
+    <% end %>
   </div>
-</br>
-
-  <div>
-    <h2>Comments</h2>
-    <div class="col-md-12">
-  <% if policy(Comment.new).create? %>
-  <%= render 'comments/form', topic: @topic, post: @post, comment: @comment %>
-  <% end %>
-  </div> 
 </div>
 
+<div class="row">
+  <div class="col-md-12">
+    <h2>Comments</h2>
+    <% if policy(Comment.new).create? %>
+      <div class="comment-form">
+        <%= render 'comments/form', topic: @topic, post: @post, comment: @comment %>
+      </div>
+    <% end %>
+    <div class="comments">
+      <%= render @comments %>
+    </div>
+  </div>
+</div>
