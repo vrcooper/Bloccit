@@ -4,7 +4,8 @@ class PostsController < ApplicationController
     @topic = Topic.find (params[:topic_id])
     @post = Post.find(params[:id])
     @comments = @post.comments
-    @comment = @post.comments.build
+    #@comment = @post.comments.build
+    @comment = Comment.new
     
   end
 
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.topic =  @topic
     authorize @post
-    #authorize @comment
+    
 
     
     if @post.save
@@ -53,12 +54,6 @@ class PostsController < ApplicationController
   end
 end
 
-private
-
-def post_params
-  params.require(:post).permit(:title, :body, :image)
-end
-
 def destroy
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
@@ -73,5 +68,13 @@ def destroy
     
     end
   end
+
+private
+
+def post_params
+  params.require(:post).permit(:title, :body, :image)
+end
+
+
 
 end
