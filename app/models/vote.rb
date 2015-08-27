@@ -6,7 +6,7 @@ class Vote < ActiveRecord::Base
 
   after_save :update_post
 
-  after_create :create_vote
+  
 
   private
 
@@ -14,7 +14,5 @@ class Vote < ActiveRecord::Base
       post.update_rank
     end
 
-    def create_vote
-      user.votes.create(post: self, value: 1)
-    end
+    
 end
