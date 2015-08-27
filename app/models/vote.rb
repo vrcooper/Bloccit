@@ -6,9 +6,13 @@ class Vote < ActiveRecord::Base
 
   after_save :update_post
 
+  
+
   private
 
     def update_post
       post.update_rank
     end
+
+    
 end

@@ -24,6 +24,11 @@ class Post < ActiveRecord::Base
 
     update_attribute(:rank, new_rank)
   end
+
+  after_create :create_vote
+      
+  
+  
   
   default_scope { order('rank DESC') }
 
@@ -32,5 +37,9 @@ class Post < ActiveRecord::Base
   #validates :topic, presence: true
   #validates :user, presence: true
 
-  
+  private
+
+  def create_vote
+      user.votes.create(post: self, value: 1)
+  end
 end
