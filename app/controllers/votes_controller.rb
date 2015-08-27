@@ -13,7 +13,7 @@ class VotesController < ApplicationController
 
     def down_vote
 
-      update vote!(-1)
+      update_vote!(-1)
 
       redirect_to :back
 
