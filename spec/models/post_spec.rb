@@ -1,13 +1,24 @@
 require 'rails_helper'
 
+
+
 describe Post do 
+
+  include TestFactories
+  
   describe "vote methods" do
 
     before do
       #user = User.create
       #topic = Topic.create
       #@post = Post.create(title: 'post title', body: 'post bodies must be pretty long.', user: user, topic: topic)
-      @post = Post.create(title: 'post title', body: 'post bodies must be pretty long.')
+      #@post = Post.create(title: 'post title', body: 'post bodies must be pretty long.')
+      #@post = Post.new(title: 'Post title', body: 'Post bodies must be pretty long.')
+      #allow(@post).to receive(:create_vote) 
+      #post_user = double(votes: @post.votes)
+      #allow(@post).to receive(:user) { post_user }
+      #@post.save
+      @post = associated_post
       3.times { @post.votes.create(value: 1) }
       2.times { @post.votes.create(value: -1) }
     end
@@ -31,4 +42,15 @@ describe Post do
     end
 
   end
+    describe '#create_vote' do
+      it "generates an up-vote when explicitly called" do
+        post = associated_post
+        expect( post.up_votes ).to eq(0)
+        post.create_vote
+        expect( post.up_votes ).to eq(1)
+      end
+    end
 end
+
+  
+
