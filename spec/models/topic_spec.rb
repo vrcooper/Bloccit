@@ -1,11 +1,16 @@
 require 'rails_helper'
 
 describe Topic do 
+
+
   describe "scopes" do
 
     before do
-      @public_topic = Topic.create(public: true) # default is public
-      @private_topic = Topic.create(public: false)
+      @public_topic = Topic.create(name: 'Public topic name',
+      description: 'The topic description must be fairly long') # default is public
+      
+      @private_topic = Topic.create(name: 'Private Topic name', description: 'This 
+        topic description must also be fairly long', public: false)
     end
 
     describe "publicly_viewable" do
