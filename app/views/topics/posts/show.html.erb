@@ -43,7 +43,7 @@
       </div>
     <% end %>
     <div class="comments">
-      <%= render @comments %>
+      <%= render partial: 'comments/comment', collection: @comments %>
     </div>
   </div>
 </div>
