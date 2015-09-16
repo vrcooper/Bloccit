@@ -8,14 +8,12 @@ class Comment < ActiveRecord::Base
 
   after_create :send_favorite_emails
 
-  default_scope { order('updated_at DESC') }
+  default_scope { order('updated_at ASC') }
 
   private
 
   def send_favorite_emails
     post.favorites.each do |favorite|
-      #FavoriteMailer.new_comment(favorite.user, post, self).deliver_now
-      #if user_id != favorite.user_id && favorite.user.email_favorites?
        if should_receive_update_for?(favorite)
         FavoriteMailer.new_comment(favorite.user, self.post, self).deliver_now
       end
