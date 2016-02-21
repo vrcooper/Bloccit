@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby "2.2.4"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
@@ -83,4 +84,4 @@ gem 'will_paginate', '~> 3.0.5'
 
 gem 'newrelic_rpm'
 
-
+gem 'bundler', '~> 1.2.0'
