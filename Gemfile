@@ -84,4 +84,4 @@ gem 'will_paginate', '~> 3.0.5'
 
 gem 'newrelic_rpm'
 
-gem 'bundler', '~> 1.2.0'
+gem 'bundler'
